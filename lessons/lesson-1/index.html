@@ -7,9 +7,9 @@ create something that only exists in your head.</p>
 
 <canvas width="200" height="200" id="snake-game"></canvas>
 
-<p>Because programming offers such a wide derth of possibilities, it requires
-some forethought. Take a moment to break down the relatively large problem of
-"build a snake game" into smaller pieces.</p>
+<p>Because programming offers such a derth of possibility, it requires some
+forethought. Take a moment to break down the relatively large problem of "build
+a snake game" into smaller pieces.</p>
 
 <p>Does your list look something like this?</p>
 
@@ -18,7 +18,7 @@ Turn the snake if an arrow key is pressed
 Put a new apple out if the snake eats an apple
 End the game if the snake hits a wall
 Grow the snake if it eats an apple
-Draw the game on the screen while the game is not ended
+Draw the game on the screen while the game is running
 End the game if the snake hits itself
 </pre>
 
@@ -26,12 +26,12 @@ End the game if the snake hits itself
 There is no right or wrong way to break down a problem, though some ways are
 easier to implement in code than others.</p>
 
-<p>You'll notice I'm using <span class="code">if</span> and <span
-class="code">while</span>. These words are <a href="./flow-control.html">flow
-control</a> keywords, and are part of the javascript programming language. Flow
-control is a fundamental building block of programming. It lets us have the
-computer make decisions or repeat something. Armed with this knowledge, we can
-take our list of rules and turn it into something code-like:</p>
+<p>There are two keywords in this example: <span class="code">if</span> and
+<span class="code">while</span>. These words are flow control keywords, and are
+part of the javascript programming language. Flow control is a fundamental
+building block of programming. It lets us have the computer make decisions or
+repeat something. Armed with this knowledge, we can take our list of rules and
+turn it into something code-like:</p>
 
 <pre>
 while (gameIsRunnning()) {
@@ -44,7 +44,11 @@ while (gameIsRunnning()) {
     placeANewApple();
   }
 
-  if (snakeEatsItself() || snakeHitsAWall()) {
+  if (snakeEatsItself()) {
+    endTheGame();
+  }
+
+  if (snakeHitsTheWall()) {
     endTheGame();
   }
 
@@ -58,8 +62,8 @@ while (gameIsRunnning()) {
 will be as if we're writing for a human and it helps us notice possible logic
 errors.</p>
 
-<p>While this may not exactly be the code we implement it is a reasonable start
-. Over the next lessons we'll make a working game.</p>
+<p>While this may not exactly be the code we implement it is a reasonable start.
+Over the next lessons we'll make a working game.</p>
 
 <script type="text/javascript" src="../js/game-engine.js"></script>
 <script type="text/javascript" src="../js/snake.js"></script>
