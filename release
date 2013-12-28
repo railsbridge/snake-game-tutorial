@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p output/lesson-1
+cat lessons/header.html lessons/index.html lessons/footer.html > output/index.html
 cat lessons/header.html lessons/lesson-1/index.html lessons/footer.html > output/lesson-1/index.html
 
 cp -r lessons/js output/js
