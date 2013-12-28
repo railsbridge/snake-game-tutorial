@@ -4,3 +4,5 @@ mkdir -p output/lesson-1
 cat lessons/header.html lessons/lesson-1/index.html lessons/footer.html > output/lesson-1/index.html
 
 cp -r lessons/js output/js
+
+s3cmd --delete-removed sync output/* s3://snake-tutorial.zeespencer.com
