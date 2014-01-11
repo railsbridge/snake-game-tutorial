@@ -3,10 +3,10 @@
 for file in lessons/lesson-* ; do
   LESSON=$(basename $file)
   mkdir -p output/$LESSON
+  cp -r lessons/$LESSON output
   cat lessons/header.html lessons/$LESSON/index.html lessons/footer.html > output/$LESSON/index.html
 done
 
-mkdir -p output/lesson-1
 cp -r lessons/js output
 
 s3cmd --delete-removed sync output/* s3://snake-tutorial.zeespencer.com
