@@ -1,9 +1,12 @@
 #!/bin/bash
 
-mkdir -p output/lesson-1
-cat lessons/header.html lessons/index.html lessons/footer.html > output/index.html
-cat lessons/header.html lessons/lesson-1/index.html lessons/footer.html > output/lesson-1/index.html
+for file in lessons/lesson-* ; do
+  LESSON=$(basename $file)
+  mkdir -p output/$LESSON
+  cat lessons/header.html lessons/$LESSON/index.html lessons/footer.html > output/$LESSON/index.html
+done
 
+mkdir -p output/lesson-1
 cp -r lessons/js output
 
 s3cmd --delete-removed sync output/* s3://snake-tutorial.zeespencer.com
