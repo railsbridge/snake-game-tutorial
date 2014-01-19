@@ -1,4 +1,4 @@
-<h1>Lesson 6 - Changing the Snakes Movement Direction</h1>
+<h1>Lesson 7 - Changing the Snakes Movement Direction</h1>
 
 <p>To change the direction of the snake, we need to change the direction of
 it's first segment. Add the following function to snake.js:</p>
@@ -110,5 +110,8 @@ var changeDirection = function(direction) {
 var snake = [{ top: 0, left: 0, direction: "down" }];
 CHUNK.executeNTimesPerSecond(advanceGame, 1);
 CHUNK.onArrowKey(changeDirection);
-
 </script>
+
+<h3>Syntax Breakdown</h3>
+<p>`CHUNK.onArrowKey` Tells chunk to call the changeDirection function every
+time an arrow key is pressed.</p>
