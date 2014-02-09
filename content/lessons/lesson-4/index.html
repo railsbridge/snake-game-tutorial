@@ -1,0 +1,119 @@
+---
+title: Lesson 4 - Moving a Single Segment Snake
+layout: default
+---
+
+<p>Now that we have a function to draw the snake, we want to move the snake.
+Lets write a function which takes a snake and changes its segments top and left
+values.</p>
+
+<p>To make our lives easier, let's make some assumptions:</p>
+
+<ul>
+  <li>The snake is only 1 segment long</li>
+  <li>The snake always moves down</li>
+</ul>
+
+<p>By making these assumptions it keeps the code clear and makes it easy to
+take small steps. Add the following code to your snake.js file: </p>
+
+<pre>
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
+  var newSnake = [newSegment];
+  return newSnake;
+}
+</pre>
+
+<p>Once we have this `moveSnake` function, we can call it and it will give us a
+snake whose segments location has changed. We can then call `drawSnake` with
+that snake and see it move across the screen!</p>
+
+<p>Type the following lines into your javascript console a few times:</p>
+
+<pre>
+  snake = moveSnake(snake);
+  drawSnake(snake);
+</pre>
+
+<h3>How the computer is interpreting this code:</h3>
+
+<blockquote>
+  <p>"Hey Sean, I'm teaching you how to move a snake.</p>
+  <p>First, Get the value of the first segment and assign it to a variable
+  caled oldSegment.</p>
+
+  <p>Second, create a new hash whose top is one more than the oldSegments
+  top and whose left is the same as the oldSegments left. </p>
+
+  <p>Third, create a new snake which is an array containing just the new
+  segment.</p>
+
+  <p>Fourth, give the new snake to whoever asked to move the snake."</p>
+</blockquote>
+
+
+<h3>Expected Results</h3>
+
+<p>Your snake.js:</p>
+<pre>
+var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
+  var newSnake = [newSegment];
+  return newSnake;
+}
+
+var snake = [{ top: 0, left: 0}];
+drawSnake(snake);
+</pre>
+
+<p>The running game:</p>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
+  var newSnake = [newSegment];
+  return newSnake;
+}
+
+var snake = [{ top: 0, left: 0}];
+drawSnake(snake);
+</script>
+
+<h3>Play Time!</h3>
+
+<ul>
+  <li>Why does adding 1 to a segments top value move it down?</li>
+  <li>Can you make the snake move right intead of down?</li>
+  <li>What happens to the newSnake variable? Can you use it outside of the
+  moveSnake function body (within the curly braces)?</li>
+  <li>Why are we re-assigning snake the results of moveSnake?</li>
+</ul>
+
+<h3>Syntax Breakdown</h3>
+
+<p> `return value` - Tells the function to immediately respond with whatever
+value it is given. In this case, the newSnake.  </p>
+
+<p>`array[location] -"Get the value at this location in the array." Arrays in
+most programming languages are "zero-indexed" i.e. the first element is at 0,
+the second is at 1, and so on.  </p>
+
+<p>`+` adds the values on the left and right together. Surprise, eh?</p>

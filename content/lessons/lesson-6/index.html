@@ -1,0 +1,153 @@
+---
+title: Lesson 6 - Snake can move in every direction
+layout: default
+---
+
+<p>Now that the snake is moving on it's own, let's make it so it can move in
+different directions!</p>
+
+<p>First, we'll create a function that moves the segment based upon it's
+direction (down, up, right, left):</p>
+
+<pre>
+var moveSegment = function(segment) {
+  if (segment.direction === "down") {
+    return { top: segment.top + 1, left: segment.left }
+  } else if (segment.direction === "up") {
+    return { top: segment.top - 1, left: segment.left }
+  } else if (segment.direction === "right") {
+    return { top: segment.top, left: segment.left + 1 }
+  } else if (segment.direction === "left") {
+    return { top: segment.top, left: segment.left - 1 }
+  }
+  return segment;
+}
+</pre>
+
+<p>The `if` statement allows us to make choices about what code to execute
+based upon values. Here we use a series of `if` and `else if`s to create a
+new segment at its next location. In the event the direction isn't one of
+the 4 we want, we return the original segment. The `direction` is a key
+we will be passing into `snake`.</p>
+
+<p>Once a segment is moved, we give it a direction to move in the next time.
+Otherwise the snake will just stop moving! This means we'll updating our 
+`moveSnake` function.</p>
+
+<pre>
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = moveSegment(oldSegment);
+  newSegment.direction = oldSegment.direction;
+  var newSnake = [newSegment];
+  return newSnake;
+}
+</pre>
+
+<p>Now it's time to add a direction to the starting snake's segments so it knows where to go.</p>
+
+<p>
+var snake = [{ top: 0, left: 0, direction: "down" }];
+</p>
+
+<h3>Expected Results</h3>
+
+<p>Your snake.js:</p>
+<pre>
+  var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  if (segment.direction == "down") {
+    return { top: segment.top + 1, left: segment.left }
+  } else if (segment.direction == "up") {
+    return { top: segment.top - 1, left: segment.left }
+  } else if (segment.direction == "right") {
+    return { top: segment.top, left: segment.left + 1 }
+  } else if (segment.direction == "left") {
+    return { top: segment.top, left: segment.left - 1 }
+  }
+  return segment;
+}
+
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = moveSegment(oldSegment);
+  newSegment.direction = oldSegment.direction;
+  var newSnake = [newSegment];
+  return newSnake;
+}
+
+var snake = [{ top: 0, left: 0, direction: "down" }];
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  drawSnake(snake);
+}
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+</pre>
+
+p>The running game:</p>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+  var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  if (segment.direction == "down") {
+    return { top: segment.top + 1, left: segment.left }
+  } else if (segment.direction == "up") {
+    return { top: segment.top - 1, left: segment.left }
+  } else if (segment.direction == "right") {
+    return { top: segment.top, left: segment.left + 1 }
+  } else if (segment.direction == "left") {
+    return { top: segment.top, left: segment.left - 1 }
+  }
+  return segment;
+}
+
+var moveSnake = function(snake) {
+  var oldSegment = snake[0];
+  var newSegment = moveSegment(oldSegment);
+  newSegment.direction = oldSegment.direction;
+  var newSnake = [newSegment];
+  return newSnake;
+}
+
+var snake = [{ top: 0, left: 0, direction: "down" }];
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  drawSnake(snake);
+}
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+</script>
+
+<h3>Play Time!</h3>
+
+<ul>
+  <li>Use a switch statement instead of a series of ifs</li>
+  <li>Change the starting snakes segments to ensure all the directions work.</li>
+</ul>
+
+<h3>Syntax Breakdown</h3>
+
+<p>`===` tells the computer to check for EXACT equality. For example: "down" === "down" will return true but "down" === "DOWN" will return false.</p>
+
+<h3><a href="../lesson-7">Move on to Lesson 7</a></h3>
+
+<h3>Helpful Links</h3>
+<ol>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FStatements%2Fswitch">switch statements</a></li>
+  <li><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/"></a>=== vs ==</li>
+</ol>
