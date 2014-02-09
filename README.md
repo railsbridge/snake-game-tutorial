@@ -12,20 +12,17 @@ This is very much a work in progress. Open issues for questions you have, or
 submit pull requests to make things clearer.
 
 ### Setting up your Environment
-Assuming you already have a working ruby environment:
+This assumes you have a working ruby environment:
 
-#### On a Mac
-* run `bin/setup`
-* run `s3cmd configure` if you haven't used s3cmd before
+On OS X with homebrew installed you can run `bin/setup`
 
-
-#### On *nix Operating Systems
 * Ensure you have s3cmd installed
 * run `bundle`
 
-### Building
-* Run `bin/build`
-* open `_site/index.html` (or the lesson you want to look at)
+### Testing Locally
+* Run `bin/serve`
+* Open [localhost:4000](http://localhost:4000)
 
 ### Deploying
+* run `s3cmd --configure` if you haven't used s3cmd before
 * Run `bin/release NAME_OF_BUCKET`

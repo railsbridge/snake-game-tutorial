@@ -1,0 +1,2 @@
+#!/bin/bash
+bin/jekyll serve -s content/lessons -d _site

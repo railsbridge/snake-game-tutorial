@@ -1,2 +1,2 @@
 #!/bin/bash
-bin/jekyll build -s content -d _site
+bin/jekyll build -s content/lessons -d _site
