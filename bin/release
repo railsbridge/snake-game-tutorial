@@ -7,4 +7,4 @@ else
   DEPLOY_URL=snake-tutorial.zeespencer.com
 fi
 bin/build
-s3cmd --delete-removed sync _site/lessons/* s3://$DEPLOY_URL
+s3cmd --delete-removed sync _site/* s3://$DEPLOY_URL

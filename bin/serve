@@ -1,2 +1,3 @@
 #!/bin/bash
-bin/jekyll serve -s content/lessons -d _site
+bin/build
+ruby -run -e httpd _site -p 4000
