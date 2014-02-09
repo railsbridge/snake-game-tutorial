@@ -1,0 +1,163 @@
+---
+layout: default
+title: Lesson 11 - Making an Apple Appear on the Screen
+---
+<p>Let's make it so an apple appears on the screen!</p>
+
+<pre>
+var draw = function(snakeToDraw, apple) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableApple = { color: "red", pixels: [apple] };
+  var drawableObjects = [drawableSnake, drawableApple];
+  CHUNK.draw(drawableObjects);
+}
+</pre>
+
+<p>We renamed the `drawSnake` function and let it take multiple arguments so it 
+can draw an apple.</p>
+
+<p>Next, let's make sure we pass the `apple` to the `draw` function, when we call it!</p>
+
+<pre>
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+</pre>
+
+<p>Finally, let's create an apple to be drawn!</p>
+
+<pre>
+var apple = { top: 8, left: 10 };
+</pre>
+
+<h3>Expected Results</h3>
+
+<p>Your snake.js:</p>
+<pre>
+var draw = function(snakeToDraw, apple) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableApple = { color: "red", pixels: [apple] };
+  var drawableObjects = [drawableSnake, drawableApple];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var segmentFurtherForwardThan = function(index, snake) {
+  return snake[index - 1] || snake[index];
+}
+
+var moveSnake = function(snake) {
+  return snake.map(function(oldSegment, segmentIndex) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = segmentFurtherForwardThan(segmentIndex, snake).direction;
+    return newSegment;
+  });
+}
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var apple = { top: 8, left: 10 };
+
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</pre>
+
+p>The running game:</p>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+var draw = function(snakeToDraw, apple) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableApple = { color: "red", pixels: [apple] };
+  var drawableObjects = [drawableSnake, drawableApple];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var segmentFurtherForwardThan = function(index, snake) {
+  return snake[index - 1] || snake[index];
+}
+
+var moveSnake = function(snake) {
+  return snake.map(function(oldSegment, segmentIndex) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = segmentFurtherForwardThan(segmentIndex, snake).direction;
+    return newSegment;
+  });
+}
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var apple = { top: 8, left: 10 };
+
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</script>
+
+<h3>Play Time!</h3>
+
+<ul>
+  <li>Why do you think we put `[]` around the apple in the `draw` function?</li>
+<ul>
+
+<h3><a href="../lesson-12">Move on to Lesson 12</a></h3>

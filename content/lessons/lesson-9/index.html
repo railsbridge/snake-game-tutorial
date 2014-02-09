@@ -1,0 +1,172 @@
+---
+title: Lesson 9 - Moving a Multiple Segment Snake
+layout: default
+---
+<p>Now that we can crash into a wall, lets have a snake longer than a single
+segment!</p>
+
+<p>Currently, the `moveSnake` function only moves the first segment in the
+snake. Let's make it to move every segment! Change `moveSnake` to the
+following:</p>
+
+<pre>
+var moveSnake = function(snake) {
+  var newSnake = [];
+  snake.forEach(function(oldSegment) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = oldSegment.direction;
+    newSnake.push(newSegment);
+  });
+
+  return newSnake;
+}
+</pre>
+
+<p>`forEach` introduces `looping`. Looping allows us to do something multiple
+times. Looping (for, while, forEach, etc) and conditionals (if, switch)` both
+allow you to control the flow of the program.</p>
+
+<p>Now that we can move many segments across the screen, let's add a second
+segment to our snake. Change the line that starts with `var snake = ...` to the
+following:</p>
+
+<pre>
+  var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+</pre>
+
+
+<p>You'll notice that if you play the game, the second segment always just
+moves down. This is OK for now!</p>
+
+<h3>Expected Results</h3>
+<h4>Your snake.js</h4>
+
+<pre>
+var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var moveSnake = function(snake) {
+  var newSnake = [];
+  snake.forEach(function(oldSegment) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = oldSegment.direction;
+    newSnake.push(newSegment);
+  });
+
+  return newSnake;
+}
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  drawSnake(snake);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</pre>
+
+<h4>The running game:</h4>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+var drawSnake = function(snakeToDraw) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableObjects = [drawableSnake];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var moveSnake = function(snake) {
+  var newSnake = [];
+  snake.forEach(function(oldSegment) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = oldSegment.direction;
+    newSnake.push(newSegment);
+  });
+
+  return newSnake;
+}
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  drawSnake(snake);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</script>
+
+<h3>Syntax Breakdown</h3>
+<p>`array.forEach` allows us to call a function with each item in a collection.
+This is a very common kind of loop and is very powerful.</p>
+
+<p>`array.push` adds the element it is given to the array it is called in.</p>
+
+<h3>Play Time!</h3>
+<ul>
+  <li><a
+    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">`array.map`</a>
+  is another kind of loop that makes it easy to build a new collection from an
+  existing collection. Rewrite the `moveSnake` function to use `array.map`
+  instead of `array.forEach`</li>
+  <li>The
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for">`for`</a>
+  and
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while">`while`</a>
+  loops are also quite common. They are more generally useful but harder to use
+  than the collection based `forEach` and `map` functions. How could you write
+  moveSnake with either `for` or `while`?</li>
+</ul>

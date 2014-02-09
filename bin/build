@@ -1,0 +1,2 @@
+#!/bin/bash
+bin/jekyll build -s content -d _site

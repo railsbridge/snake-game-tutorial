@@ -1,0 +1,201 @@
+---
+layout: default
+title: Lesson 12 - Growing the snake when it eats an apple!
+---
+
+<p>Now that an apple appears on the screen, we can make eating it grow
+the snake.</p>
+
+<p>To do that, we'll create a stationary copy of the snakes last segment. When
+the snake moves next the copied segment will stay in place, causing it to
+"grow" on the screen.</p>
+
+<pre>
+var growSnake = function(snake) {
+  var indexOfLastSegment = snake.length - 1;
+  var lastSegment = snake[snake.length - 1];
+  snake.push({ top: lastSegment.top, left: lastSegment.left });
+  return snake;
+}
+</pre>
+
+<p>Now that we have a function to grow the snake, let's check for a collision
+between the apple and the snake whenever the game advances. Let's change the
+`advanceGame` function so it looks like this:</p>
+
+<pre>
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween([apple], snake)) {
+    snake = growSnake(snake);
+    apple = CHUNK.randomLocation();
+  }
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+</pre>
+<h3>Expected Results</h3>
+
+<h4>Your snake.js</h4>
+<pre>
+var draw = function(snakeToDraw, apple) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableApple = { color: "red", pixels: [apple] };
+  var drawableObjects = [drawableSnake, drawableApple];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var segmentFurtherForwardThan = function(index, snake) {
+  return snake[index - 1] || snake[index];
+}
+
+var moveSnake = function(snake) {
+  return snake.map(function(oldSegment, segmentIndex) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = segmentFurtherForwardThan(segmentIndex, snake).direction;
+    return newSegment;
+  });
+}
+
+var growSnake = function(snake) {
+  var indexOfLastSegment = snake.length - 1;
+  var lastSegment = snake[snake.length - 1];
+  snake.push({ top: lastSegment.top, left: lastSegment.left });
+  return snake;
+}
+
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween([apple], snake)) {
+    snake = growSnake(snake);
+    apple = CHUNK.randomLocation();
+  }
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var apple = CHUNK.randomLocation();
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</pre>
+
+<p>The running game:</p>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+var draw = function(snakeToDraw, apple) {
+  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableApple = { color: "red", pixels: [apple] };
+  var drawableObjects = [drawableSnake, drawableApple];
+  CHUNK.draw(drawableObjects);
+}
+
+var moveSegment = function(segment) {
+  switch(segment.direction) {
+    case "down":
+      return { top: segment.top + 1, left: segment.left };
+    case "up":
+      return { top: segment.top - 1, left: segment.left };
+    case "right":
+      return { top: segment.top, left: segment.left + 1 }
+    case "left":
+      return { top: segment.top, left: segment.left - 1 }
+    default:
+      return segment;
+  }
+}
+
+var segmentFurtherForwardThan = function(index, snake) {
+  return snake[index - 1] || snake[index];
+}
+
+var moveSnake = function(snake) {
+  return snake.map(function(oldSegment, segmentIndex) {
+    var newSegment = moveSegment(oldSegment);
+    newSegment.direction = segmentFurtherForwardThan(segmentIndex, snake).direction;
+    return newSegment;
+  });
+}
+
+// Let's make it so the snake grows when we hit the apple!
+var growSnake = function(snake) {
+  var tipOfTailIndex = snake.length - 1;
+  // `array.length` tells us how many elements are in the snake array.
+  // arrays are zero indexed, so we subtract one to get the index of the tip.
+  var tipOfTail = snake[snake.length - 1];
+  snake.push({ top: tipOfTail.top, left: tipOfTail.left });
+  // Add a new segment at the tips location, but don't give it a direction so
+  // it will stay in place when the snake moves next.
+  return snake;
+}
+
+
+// Now each time the game advances we need to check for a collision between the
+// apple and snake, and when it finds one grow the snake and move the apple.
+var advanceGame = function() {
+  snake = moveSnake(snake);
+  if (CHUNK.detectCollisionBetween([apple], snake)) {
+    snake = growSnake(snake);
+    apple = CHUNK.randomLocation();
+  }
+  if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
+    CHUNK.endGame();
+    alert("Woops! you hit a wall!");
+  }
+  draw(snake, apple);
+}
+
+var changeDirection = function(direction) {
+  snake[0].direction = direction;
+}
+
+var apple = CHUNK.randomLocation();
+var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
+
+CHUNK.executeNTimesPerSecond(advanceGame, 1);
+CHUNK.onArrowKey(changeDirection);
+</script>
+
+<h3>Play Time!</h3>
+
+<ul>
+  <li>When is the newly added segment given a direction to move in?</li>
+  <li>Why do we put the `apple` variable inside of `[]` when we call
+  `detectCollision`</li>
+<ul>
+
+<h3><a href="../lesson-13">Move on to Lesson 13</a></h3>
+
+<h3>Syntax Breakdown</h3>
+
+<p>`array.length` tells us how many elements are in a list. Arrays are zero
+indexed, so we subtract one to get the index of the last element in the
+list.</p>

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bin/build
+s3cmd --delete-removed sync _site/lessons/* s3://snake-tutorial.zeespencer.com
