@@ -1,4 +1,10 @@
 #!/bin/bash
 
+if [ $1 ];
+then
+  DEPLOY_URL=$1
+else
+  DEPLOY_URL=snake-tutorial.zeespencer.com
+fi
 bin/build
-s3cmd --delete-removed sync _site/lessons/* s3://snake-tutorial.zeespencer.com
+s3cmd --delete-removed sync _site/lessons/* s3://$DEPLOY_URL

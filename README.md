@@ -12,7 +12,20 @@ This is very much a work in progress. Open issues for questions you have, or
 submit pull requests to make things clearer.
 
 ### Setting up your Environment
-If you are on a mac `run bin/setup` then run `s3cmd configure` to set up your s3
-credentials.
+Assuming you already have a working ruby environment:
 
-If you are on anything else you'll have to figure it out on your own :(
+#### On a Mac
+* run `bin/setup`
+* run `s3cmd configure` if you haven't used s3cmd before
+
+
+#### On *nix Operating Systems
+* Ensure you have s3cmd installed
+* run `bundle`
+
+### Building
+* Run `bin/build`
+* open `_site/index.html` (or the lesson you want to look at)
+
+### Deploying
+* Run `bin/release NAME_OF_BUCKET`
