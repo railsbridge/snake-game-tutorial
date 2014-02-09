@@ -1,2 +1,3 @@
 #!/bin/bash
-bin/jekyll build -s content/lessons -d _site
+bin/jekyll build -s content/lessons
+(cd content && zip -r ../_site/js-snake-game-tutorial.zip js-snake-game-tutorial)
