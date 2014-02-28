@@ -1,6 +1,7 @@
 ---
 title: Lesson 4 - Moving a Single Segment Snake
 layout: default
+lesson_js: lesson-4.js
 ---
 
 <p>Now that we have a function to draw the snake, we want to move the snake.
@@ -40,7 +41,7 @@ that snake and see it move across the screen!</p>
 <h3>How the computer is interpreting this code:</h3>
 
 <blockquote>
-  <p>"Hey Sean, I'm teaching you how to move a snake.</p>
+  <p>Hey Sean, here's how you move a snake.</p>
   <p>First, Get the value of the first segment and assign it to a variable
   caled oldSegment.</p>
 
@@ -50,52 +51,10 @@ that snake and see it move across the screen!</p>
   <p>Third, create a new snake which is an array containing just the new
   segment.</p>
 
-  <p>Fourth, give the new snake to whoever asked to move the snake."</p>
+  <p>Fourth, give the new snake to whoever asked to move the snake.</p>
 </blockquote>
 
-
-<h3>Expected Results</h3>
-
-<p>Your snake.js:</p>
-<pre>
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var snake = [{ top: 0, left: 0}];
-drawSnake(snake);
-</pre>
-
-<p>The running game:</p>
-<canvas id="chunk-game" height="600" width="800"></canvas>
-
-<script type="text/javascript" src="../js/chunk.js"></script>
-<script type="text/javascript">
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var snake = [{ top: 0, left: 0}];
-drawSnake(snake);
-</script>
+{% include expected-results.html %}
 
 <h3>Play Time!</h3>
 

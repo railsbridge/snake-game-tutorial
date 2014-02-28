@@ -1,0 +1,15 @@
+<h3>Expected Results</h3>
+
+<p>What your snake.js should look like:</p>
+
+{% highlight js linenos %}
+{% include {{page.lesson_js}} %}
+{% endhighlight %}
+
+<p>The running game:</p>
+<canvas id="chunk-game" height="600" width="800"></canvas>
+
+<script type="text/javascript" src="../js/chunk.js"></script>
+<script type="text/javascript">
+{% include {{page.lesson_js}} %}
+</script>

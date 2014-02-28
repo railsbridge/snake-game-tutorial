@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lesson 5 - Make CHUNK moves the snake for us
+lesson_js: lesson-5.js
 ---
 
 <p>Hooray! We can both draw and move the snake! Of course, having our users
@@ -33,62 +34,7 @@ etc.) we can pass them as arguments to other functions.</p>
   <p>"Hey Sean, create a function that moves the game forward. Next tell chunk to execute that function once per-second.</p>
 </blockquote>
 
-<h3>Expected Results</h3>
-
-<p>Your snake.js:</p>
-<pre>
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var snake = [{ top: 0, left: 0}];
-drawSnake(snake);
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var advanceGame = function() {
-  snake = moveSnake(snake);
-  drawSnake(snake);
-}
-
-CHUNK.executeNTimesPerSecond(advanceGame, 1);
-</pre>
-
-<p>The running game:</p>
-<canvas id="chunk-game" height="600" width="800"></canvas>
-
-<script type="text/javascript" src="../js/chunk.js"></script>
-<script type="text/javascript">
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var snake = [{ top: 0, left: 0}];
-drawSnake(snake);
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var advanceGame = function() {
-  snake = moveSnake(snake);
-  drawSnake(snake);
-}
-
-CHUNK.executeNTimesPerSecond(advanceGame, 1);
-</script>
+{% include expected-results.html %}
 
 <h3>Play Time!</h3>
 

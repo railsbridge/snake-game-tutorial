@@ -1,6 +1,7 @@
 ---
 title: Lesson 3 - Drawing a Snake Multiple Times
 layout: default
+lesson_js: lesson-3.js
 ---
 <p>Now that we have a snake being drawn on the screen, We're going
 to want to be able to draw it many times, for instance every time
@@ -45,32 +46,7 @@ value of draw from  CHUNK and hand it the drawableObjects. Thanks!"</p>
 
 <p>"Hey Sean? Remember `drawSnake`? Well, draw this snake!"</p>
 
-<h3>Expected Results</h3>
-<p>Your snake.js:</p>
-<pre>
-  var drawSnake = function(snakeToDraw) {
-    var drawableSnake = { color: "green", pixels: snakeToDraw };
-    var drawableObjects = [drawableSnake];
-    CHUNK.draw(drawableObjects);
-  }
-  var snake = [{ top: 0, left: 0}];
-  drawSnake(snake);
-</pre>
-
-<p>The running game:</p>
-
-<canvas id="chunk-game" height="600" width="800"></canvas>
-
-<script type="text/javascript" src="../js/chunk.js"></script>
-<script type="text/javascript">
-  var drawSnake = function(snakeToDraw) {
-    var drawableSnake = { color: "green", pixels: snakeToDraw };
-    var drawableObjects = [drawableSnake];
-    CHUNK.draw(drawableObjects);
-  }
-  var snake = [{ top: 0, left: 0}];
-  drawSnake(snake);
-</script>
+{% include expected-results.html %}
 
 <h3>Play Time!</h3>
 

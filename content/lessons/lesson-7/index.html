@@ -1,6 +1,7 @@
 ---
 title: Lesson 7 - Changing the Snakes Movement Direction
 layout: default
+lesson_js: lesson-7.js
 ---
 
 <p>To change the direction of the snake, we need to change the direction of
@@ -19,101 +20,7 @@ Add the following line at the end of snake.js:</p>
   CHUNK.onArrowKey(changeDirection);
 </pre>
 
-<h3>Expected Results</h3>
-<h4>Your snake.js</h4>
-
-<pre>
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var moveSegment = function(segment) {
-  switch(segment.direction) {
-    case "down":
-      return { top: segment.top + 1, left: segment.left };
-    case "up":
-      return { top: segment.top - 1, left: segment.left };
-    case "right":
-      return { top: segment.top, left: segment.left + 1 }
-    case "left":
-      return { top: segment.top, left: segment.left - 1 }
-    default:
-      return segment;
-  }
-}
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = moveSegment(oldSegment);
-  newSegment.direction = oldSegment.direction;
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var advanceGame = function() {
-  snake = moveSnake(snake);
-  drawSnake(snake);
-}
-
-var changeDirection = function(direction) {
-  snake[0].direction = direction;
-}
-
-var snake = [{ top: 0, left: 0, direction: "down" }];
-CHUNK.executeNTimesPerSecond(advanceGame, 1);
-CHUNK.onArrowKey(changeDirection);
-
-</pre>
-
-<h4>The running game:</h4>
-<canvas id="chunk-game" height="600" width="800"></canvas>
-
-<script type="text/javascript" src="../js/chunk.js"></script>
-<script type="text/javascript">
-var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "green", pixels: snakeToDraw };
-  var drawableObjects = [drawableSnake];
-  CHUNK.draw(drawableObjects);
-}
-
-var moveSegment = function(segment) {
-  switch(segment.direction) {
-    case "down":
-      return { top: segment.top + 1, left: segment.left };
-    case "up":
-      return { top: segment.top - 1, left: segment.left };
-    case "right":
-      return { top: segment.top, left: segment.left + 1 }
-    case "left":
-      return { top: segment.top, left: segment.left - 1 }
-    default:
-      return segment;
-  }
-}
-
-var moveSnake = function(snake) {
-  var oldSegment = snake[0];
-  var newSegment = moveSegment(oldSegment);
-  newSegment.direction = oldSegment.direction;
-  var newSnake = [newSegment];
-  return newSnake;
-}
-
-var advanceGame = function() {
-  snake = moveSnake(snake);
-  drawSnake(snake);
-}
-
-var changeDirection = function(direction) {
-  snake[0].direction = direction;
-}
-
-var snake = [{ top: 0, left: 0, direction: "down" }];
-CHUNK.executeNTimesPerSecond(advanceGame, 1);
-CHUNK.onArrowKey(changeDirection);
-</script>
+{% include expected-results.html %}
 
 <h3>Syntax Breakdown</h3>
 <p>`CHUNK.onArrowKey` Tells chunk to call the changeDirection function every

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lesson 2 - Drawing the Snake
+lesson_js: lesson-2.js
 ---
 <p>To get started, we want to create a `variable` that represents the
 snake. Add the following line to the beginning of game/snake.js:</p>
@@ -36,24 +37,7 @@ Thanks!"</p>
 <p>"Hey Sean, create a list that includes the `drawableSnake`. Get value of `draw`
 from `CHUNK` and execute it with the list. Thanks!"</p>
 
-<h3>Expected Results</h3>
-<p>Your snake.js:</p>
-<pre>
-  var snake = [{ top: 0, left: 0}];
-  var drawableSnake = { color: "green", pixels: snake };
-  CHUNK.draw([drawableSnake]);
-</pre>
-
-<p>The running game:</p>
-
-<canvas id="chunk-game" height="600" width="800"></canvas>
-
-<script type="text/javascript" src="../js/chunk.js"></script>
-<script type="text/javascript">
-  var snake = [{ top: 0, left: 0}];
-  var drawableSnake = { color: "green", pixels: snake };
-  CHUNK.draw([drawableSnake]);
-</script>
+{% include expected-results.html %}
 
 <h3>Play Time!</h3>
 
