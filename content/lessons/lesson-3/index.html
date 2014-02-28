@@ -2,12 +2,12 @@
 title: Lesson 3 - Drawing a Snake Multiple Times
 layout: default
 ---
-<p>Now that we have a snake being drawn on the screen, We're going 
-to want to be able to draw it many times, for instance every time 
+<p>Now that we have a snake being drawn on the screen, We're going
+to want to be able to draw it many times, for instance every time
 it moves.</p>
 
-<p>To do this, we'll define a function which draws the snake 
-it's given. Add the following line to the beginning of 
+<p>To do this, we'll define a function which draws the snake
+it's given. Add the following line to the beginning of
 game/snake.js:</p>
 
 <pre>
@@ -18,16 +18,16 @@ game/snake.js:</p>
   }
 </pre>
 
-<p>Functions are objects in Javascript that wrap a set of statements, 
+<p>Functions are objects in Javascript that wrap a set of statements,
 and are meant to be reusable.</p>
 
-<p>You'll notice this is similar to how we used the `var` keyword 
-and `=` symbol to create the snake earlier. The only difference 
-is instead of assigning a list of objects to a variable, we're 
+<p>You'll notice this is similar to how we used the `var` keyword
+and `=` symbol to create the snake earlier. The only difference
+is instead of assigning a list of objects to a variable, we're
 assigning a chunk of code that we want to use later.</p>
 
-<p>Now all we have to do is call drawSnake with a snake and it 
-will be drawn on the screen! Write the following under the 
+<p>Now all we have to do is call drawSnake with a snake and it
+will be drawn on the screen! Write the following under the
 drawSnake function.</p>
 
 <pre>
@@ -36,11 +36,11 @@ drawSnake function.</p>
 </pre>
 
 <h3>How the computer is interpreting this code:</h3>
-<p>"Hey Sean, I'm going to teach you how to draw a snake. When 
-someone tells you to `drawSnake` and hands you a `snakeToDraw`, 
-you are going to create an object called `drawableSnake` with a 
-color of blue and pixels of `snakeToDraw`. Create a list of 
-`drawableObjects` and put the drawableSnakein it. Now get the 
+<p>"Hey Sean, I'm going to teach you how to draw a snake. When
+someone tells you to `drawSnake` and hands you a `snakeToDraw`,
+you are going to create an object called `drawableSnake` with a
+color of blue and pixels of `snakeToDraw`. Create a list of
+`drawableObjects` and put the `drawableSnake` in it. Now get the
 value of draw from  CHUNK and hand it the drawableObjects. Thanks!"</p>
 
 <p>"Hey Sean? Remember `drawSnake`? Well, draw this snake!"</p>
@@ -76,14 +76,14 @@ value of draw from  CHUNK and hand it the drawableObjects. Thanks!"</p>
 
 <ul>
   <li>Open up the console and play around with making the
-  snake move by calling `drawSnake` with snakes that have 
+  snake move by calling `drawSnake` with snakes that have
   different `top` and `left` values for their segment.</li>
 </ul>
 
 <h3>Syntax Breakdown</h3>
 
-<p>`function() { }` says "Hey, between the curly braces is some 
-code we want to be able to execute." Functions can be stored inside 
+<p>`function() { }` says "Hey, between the curly braces is some
+code we want to be able to execute." Functions can be stored inside
 variables just like words and numbers and objects and lists.</p>
 
 <p>`(` and `)` in this case are a way to say that this function expects
