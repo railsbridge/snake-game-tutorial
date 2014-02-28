@@ -6,7 +6,7 @@ title: Lesson 11 - Making an Apple Appear on the Screen
 
 <pre>
 var draw = function(snakeToDraw, apple) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableApple = { color: "red", pixels: [apple] };
   var drawableObjects = [drawableSnake, drawableApple];
   CHUNK.draw(drawableObjects);
@@ -40,7 +40,7 @@ var apple = { top: 8, left: 10 };
 <p>Your snake.js:</p>
 <pre>
 var draw = function(snakeToDraw, apple) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableApple = { color: "red", pixels: [apple] };
   var drawableObjects = [drawableSnake, drawableApple];
   CHUNK.draw(drawableObjects);
@@ -94,13 +94,13 @@ CHUNK.executeNTimesPerSecond(advanceGame, 1);
 CHUNK.onArrowKey(changeDirection);
 </pre>
 
-p>The running game:</p>
+<p>The running game:</p>
 <canvas id="chunk-game" height="600" width="800"></canvas>
 
 <script type="text/javascript" src="../js/chunk.js"></script>
 <script type="text/javascript">
 var draw = function(snakeToDraw, apple) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableApple = { color: "red", pixels: [apple] };
   var drawableObjects = [drawableSnake, drawableApple];
   CHUNK.draw(drawableObjects);

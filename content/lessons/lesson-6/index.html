@@ -55,7 +55,7 @@ var snake = [{ top: 0, left: 0, direction: "down" }];
 <p>Your snake.js:</p>
 <pre>
   var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableObjects = [drawableSnake];
   CHUNK.draw(drawableObjects);
 }
@@ -91,13 +91,13 @@ var advanceGame = function() {
 CHUNK.executeNTimesPerSecond(advanceGame, 1);
 </pre>
 
-p>The running game:</p>
+<p>The running game:</p>
 <canvas id="chunk-game" height="600" width="800"></canvas>
 
 <script type="text/javascript" src="../js/chunk.js"></script>
 <script type="text/javascript">
   var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableObjects = [drawableSnake];
   CHUNK.draw(drawableObjects);
 }

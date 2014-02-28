@@ -38,7 +38,7 @@ etc.) we can pass them as arguments to other functions.</p>
 <p>Your snake.js:</p>
 <pre>
 var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableObjects = [drawableSnake];
   CHUNK.draw(drawableObjects);
 }
@@ -67,7 +67,7 @@ CHUNK.executeNTimesPerSecond(advanceGame, 1);
 <script type="text/javascript" src="../js/chunk.js"></script>
 <script type="text/javascript">
 var drawSnake = function(snakeToDraw) {
-  var drawableSnake = { color: "blue", pixels: snakeToDraw };
+  var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableObjects = [drawableSnake];
   CHUNK.draw(drawableObjects);
 }
