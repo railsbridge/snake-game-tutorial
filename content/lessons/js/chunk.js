@@ -8,6 +8,7 @@ var CHUNK = {
     37: "left",
     38: "up"
   },
+  started: true,
   attrs: {},
   gameHeight: function() {
     return this.attrs.gameHeight || (this.attrs.gameHeight = this.canvasHeight / this.pixelSize);
@@ -35,11 +36,14 @@ var CHUNK = {
     });
   },
   endGame: function() {
+    this.started = false
     clearInterval(CHUNK.processID);
   },
   draw: function(objects) {
-   CHUNK.clear();
-   CHUNK.drawObjects(objects);
+    if (this.started) {
+     CHUNK.clear();
+     CHUNK.drawObjects(objects);
+    }
   },
   clear: function() {
     CHUNK.canvas().clearRect(0, 0, CHUNK.canvasWidth, CHUNK.canvasHeight);
