@@ -38,8 +38,10 @@ var CHUNK = {
     clearInterval(CHUNK.processID);
   },
   draw: function(objects) {
-   CHUNK.clear();
-   CHUNK.drawObjects(objects);
+    if (this.started) {
+     CHUNK.clear();
+     CHUNK.drawObjects(objects);
+    }
   },
   clear: function() {
     CHUNK.canvas().clearRect(0, 0, CHUNK.canvasWidth, CHUNK.canvasHeight);
