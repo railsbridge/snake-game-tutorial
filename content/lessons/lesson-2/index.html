@@ -6,18 +6,22 @@ lesson_js: lesson-2.js
 <p>To get started, we want to create a `variable` that represents the
 snake. Add the following line to the beginning of game/snake.js:</p>
 
-<pre>
+{% highlight js %}
   var snake = [{ top: 0, left: 0}];
-</pre>
+{% endhighlight %}
+
 
 <p>Now that we have this amazing snake we want to show it off, right?
 Thankfully, the CHUNK game engine makes it easy to draw on
 the screen. Let's tell CHUNK to `draw` our `snake`!</p>
 
-<pre>
+{% highlight js %}
   var drawableSnake = { color: "green", pixels: snake };
   CHUNK.draw([drawableSnake]);
-</pre>
+{% endhighlight %}
+
+<p>Every time you change your `snake.js` file, you'll want to save it and
+refresh the browser page that has the index.html in it</p>
 
 <p>Congratulations, by the way! You've drawn a very-short snake on the screen.</p>
 
@@ -25,17 +29,21 @@ the screen. Let's tell CHUNK to `draw` our `snake`!</p>
 <p>Imagine the computer is named Sean and can understand English. This is a
 reasonable approximation of what we're telling Sean:</p>
 
-<p>"Hey Sean! Please get me a box and label it "snake." Then grab a note-card,
-write the word "top" on it and put a 0 after it. Also, Put the word "left"
-on the card and put a 0 after it, too. Now, put the note-card in the box.
-Thanks!"</p>
 
-<p>"Hey Sean, create a variable called `drawableSnake`. Make it an object with
-a color of green and pixels of that `snake` variable we defined earlier.
-Thanks!"</p>
+<blockquote>
+  <p>Hey Sean!</p>
 
-<p>"Hey Sean, create a list that includes the `drawableSnake`. Get value of `draw`
-from `CHUNK` and execute it with the list. Thanks!"</p>
+  <p>First, get me a box and label it "snake." Then grab a note-card,
+  label it "top" put a 0 on it. Grab another card, label it "left"
+  and put a 0 on it. Put the note-card in the box.</p>
+
+  <p>Second, grab another box and label it `drawableSnake`. Add a note card
+  labeled "color" and put "green" on it. Add another note card labeled "snake"
+  and put "See the box labeled snake" on it.</p>
+
+  <p>Third, create a list with the `drawableSnake` in it. Then get the value of
+  `draw` from the `CHUNK` object and execute it with that list.</p>
+</blockquote>
 
 {% include expected-results.html %}
 
