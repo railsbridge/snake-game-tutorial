@@ -11,13 +11,13 @@ it moves.</p>
 it's given. Add the following line to the beginning of
 game/snake.js:</p>
 
-<pre>
+{% highlight js %}
   var drawSnake = function(snakeToDraw) {
     var drawableSnake = { color: "green", pixels: snakeToDraw };
     var drawableObjects = [drawableSnake];
     CHUNK.draw(drawableObjects);
   }
-</pre>
+{% endhighlight %}
 
 <p>Functions are objects in Javascript that wrap a set of statements,
 and are meant to be reusable.</p>
@@ -31,10 +31,16 @@ assigning a chunk of code that we want to use later.</p>
 will be drawn on the screen! Write the following under the
 drawSnake function.</p>
 
-<pre>
+{% highlight js %}
   var snake = [{ top: 0, left: 0}];
   drawSnake(snake);
-</pre>
+{% endhighlight %}
+
+<p>Javascript interprets code from top to bottom. This means we can't call
+functions until after we've defined them. Make sure you put this code at the
+end of the `snake.js` file.</p>
+
+{% include expected-results.html %}
 
 <h3>How the computer is interpreting this code:</h3>
 
@@ -48,8 +54,6 @@ drawSnake function.</p>
 
   <p>Hey Sean? Remember `drawSnake`? Well, draw this snake!</p>
 </blockquote>
-
-{% include expected-results.html %}
 
 <h3>Play Time!</h3>
 
