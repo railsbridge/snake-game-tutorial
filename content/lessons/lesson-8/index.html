@@ -15,7 +15,7 @@ var advanceGame = function() {
   snake = moveSnake(snake);
   if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
     CHUNK.endGame();
-    alert("Woops! you hit a wall!");
+    CHUNK.flashMessage("Woops! you hit a wall!");
   }
   drawSnake(snake);
 }
@@ -36,8 +36,7 @@ returns true if the collections share any pixels</p>
 <p>`CHUNK.endGame` tells chunk to stop calling the advanceGame function,
 effectively ending the game.</p>
 
-<p>`alert` pops up a small, dismissable window (dialog box) with the string it
-is passed.</p>
+<p>`CHUNK.flashMessage` displays text to the user.</p>
 
 <h3><a href="../lesson-9">Move on to Lesson 9</a></h3>
 
