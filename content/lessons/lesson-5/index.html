@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Lesson 5 - Make CHUNK moves the snake for us
+title: Lesson 5 - Make CHUNK move the snake for us
 lesson_js: lesson-5.js
 ---
 
@@ -17,7 +17,7 @@ var advanceGame = function() {
 }
 </pre>
 
-<p>To get this function running we'll use our CHUNK game engine to call the `executeNTimesPerSecond` function. It does exactly that, to do this `executeNTimesPerSecond` takes in two arguments. The first arugement advances the game, and the second tells it how many times to move per-second.</p>
+<p>To get this function running we'll use our CHUNK game engine to CALL the `executeNTimesPerSecond` function. It does exactly that, to do this `executeNTimesPerSecond` takes in two arguments. The first arugement advances the game, and the second tells it how many times to move per-second.</p>
 
 <pre>
 CHUNK.executeNTimesPerSecond(advanceGame, 1);
