@@ -86,5 +86,12 @@ var CHUNK = {
       top: Math.floor(Math.random()*CHUNK.gameHeight()),
       left: Math.floor(Math.random()*CHUNK.gameWidth()),
     }
+  },
+  flashMessage: function(message) {
+    var canvas = document.getElementById("chunk-game");
+    var context = canvas.getContext('2d');
+    context.font = '20pt Calibri';
+    context.fillStyle = 'yellow';
+    context.fillText(message, 275, 100);
   }
 }
