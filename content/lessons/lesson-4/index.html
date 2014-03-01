@@ -18,14 +18,14 @@ values.</p>
 <p>By making these assumptions it keeps the code clear and makes it easy to
 take small steps. Add the following code to your snake.js file: </p>
 
-<pre>
+{% highlight js %}
 var moveSnake = function(snake) {
   var oldSegment = snake[0];
   var newSegment = { top: oldSegment.top + 1, left: oldSegment.left };
   var newSnake = [newSegment];
   return newSnake;
 }
-</pre>
+{% endhighlight %}
 
 <p>Once we have this `moveSnake` function, we can call it and it will give us a
 snake whose segment's location has changed. We can then call `drawSnake` with
@@ -33,10 +33,10 @@ that snake and see it move across the screen!</p>
 
 <p>Type the following lines into your javascript console a few times:</p>
 
-<pre>
+{% highlight js %}
   snake = moveSnake(snake);
   drawSnake(snake);
-</pre>
+{% endhighlight %}
 
 <h3>How the computer is interpreting this code:</h3>
 

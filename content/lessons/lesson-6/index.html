@@ -10,7 +10,7 @@ different directions!</p>
 <p>First, we'll create a function that moves the segment based upon it's
 direction (down, up, right, left):</p>
 
-<pre>
+{% highlight js %}
 var moveSegment = function(segment) {
   if (segment.direction === "down") {
     return { top: segment.top + 1, left: segment.left }
@@ -23,7 +23,7 @@ var moveSegment = function(segment) {
   }
   return segment;
 }
-</pre>
+{% endhighlight %}
 
 <p>The `if` statement allows us to make choices about what code to execute
 based upon values. Here we use a series of `if` and `else if`s to create a
@@ -35,7 +35,7 @@ we will be passing into `snake`.</p>
 Otherwise the snake will just stop moving! This means we'll updating our 
 `moveSnake` function.</p>
 
-<pre>
+{% highlight js %}
 var moveSnake = function(snake) {
   var oldSegment = snake[0];
   var newSegment = moveSegment(oldSegment);
@@ -43,7 +43,7 @@ var moveSnake = function(snake) {
   var newSnake = [newSegment];
   return newSnake;
 }
-</pre>
+{% endhighlight %}
 
 <p>Now it's time to add a direction to the starting snake's segments so it knows where to go.</p>
 

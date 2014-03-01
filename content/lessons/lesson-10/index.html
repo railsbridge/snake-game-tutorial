@@ -11,31 +11,31 @@ all segments follow the same path!</p>
 segment index and a snake and returns the segment closer to the head. Let's
 start with:</p>
 
-<pre>
+{% highlight js %}
 var segmentFurtherForwardThan = function(index, snake) {
   return snake[index - 1]
 }
-</pre>
+{% endhighlight %}
 
 While this <em>seems</em> OK, in reality it has a nefarious bug! Open your console and type:
 
-<pre>
+{% highlight js %}
   segmentFurtherForwardThan(1, snake);
-</pre>
+{% endhighlight %}
 
 <p>This returns a segment object, which looks great! But what happens if we try
 a index of 0?</p>
 
-<pre>
+{% highlight js %}
   segmentFurtherForwardThan(0, snake);
-</pre>
+{% endhighlight %}
 
 <p>Instead of a segment, we get `undefined`! This means we can't get a
 direction! Let's use an `if` statement to return the segment at the index if
 there isn't a segment further forward. Change `segmentFurtherForwardThan` to:
 </p>
 
-<pre>
+{% highlight js %}
 var segmentFurtherForwardThan = function(index, snake) {
   if (snake[index - 1] === undefined) {
     return snake[index];
@@ -43,13 +43,13 @@ var segmentFurtherForwardThan = function(index, snake) {
     return snake[index - 1];
   }
 }
-</pre>
+{% endhighlight %}
 
 <p>Now when you run `segmentFurtherForwardThan(0, snake)` it will return the
 snakes head instead of undefined. Excellent! Now we get to change moveSnake to
 use `segmentFurtherForwardThan` when it assigns the segments direction. Change `moveSnake` to:</p>
 
-<pre>
+{% highlight js %}
 var moveSnake = function(snake) {
   return snake.map(function(oldSegment, segmentIndex) {
     var newSegment = moveSegment(oldSegment);
@@ -57,7 +57,7 @@ var moveSnake = function(snake) {
     return newSegment;
   });
 }
-</pre>
+{% endhighlight %}
 
 <p>Great! Now each segment will follow the segment ahead of it!</p>
 
@@ -70,4 +70,3 @@ the third is the collection itself.</p>
 <h3>Play Time!</h3>
 
 <h3><a href="../lesson-11">Move on to Lesson 11</a></h3>
-

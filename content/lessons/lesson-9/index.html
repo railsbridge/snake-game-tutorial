@@ -10,7 +10,7 @@ segment!</p>
 snake. Let's make it to move every segment! Change `moveSnake` to the
 following:</p>
 
-<pre>
+{% highlight js %}
 var moveSnake = function(snake) {
   var newSnake = [];
   snake.forEach(function(oldSegment) {
@@ -21,7 +21,7 @@ var moveSnake = function(snake) {
 
   return newSnake;
 }
-</pre>
+{% endhighlight %}
 
 <p>`forEach` introduces `looping`. Looping allows us to do something multiple
 times. Looping (for, while, forEach, etc) and conditionals (if, switch)` both
@@ -31,9 +31,9 @@ allow you to control the flow of the program.</p>
 segment to our snake. Change the line that starts with `var snake = ...` to the
 following:</p>
 
-<pre>
+{% highlight js %}
   var snake = [{ top: 1, left: 0, direction: "down" }, { top: 0, left: 0, direction: "down" }];
-</pre>
+{% endhighlight %}
 
 {% include expected-results.html %}
 
