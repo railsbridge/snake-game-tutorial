@@ -5,13 +5,13 @@ var drawSnake = function(snakeToDraw) {
 }
 
 var moveSegment = function(segment) {
-  if (segment.direction == "down") {
+  if (segment.direction === "down") {
     return { top: segment.top + 1, left: segment.left }
-  } else if (segment.direction == "up") {
+  } else if (segment.direction === "up") {
     return { top: segment.top - 1, left: segment.left }
-  } else if (segment.direction == "right") {
+  } else if (segment.direction === "right") {
     return { top: segment.top, left: segment.left + 1 }
-  } else if (segment.direction == "left") {
+  } else if (segment.direction === "left") {
     return { top: segment.top, left: segment.left - 1 }
   }
   return segment;
