@@ -8,6 +8,7 @@ var CHUNK = {
     37: "left",
     38: "up"
   },
+  started: true,
   attrs: {},
   gameHeight: function() {
     return this.attrs.gameHeight || (this.attrs.gameHeight = this.canvasHeight / this.pixelSize);
@@ -30,11 +31,13 @@ var CHUNK = {
   onArrowKey: function(callback) {
     document.addEventListener('keydown', function(e) {
       if (CHUNK.KEY_MAPPING[e.which]) {
+        e.preventDefault();
         callback(CHUNK.KEY_MAPPING[e.which]);
       }
     });
   },
   endGame: function() {
+    this.started = false
     clearInterval(CHUNK.processID);
   },
   draw: function(objects) {
