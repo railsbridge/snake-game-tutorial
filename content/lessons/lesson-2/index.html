@@ -10,20 +10,25 @@ snake. Add the following line to the beginning of game/snake.js:</p>
   var snake = [{ top: 0, left: 0}];
 {% endhighlight %}
 
-
-<p>Now that we have this amazing snake we want to show it off, right?
-Thankfully, the CHUNK game engine makes it easy to draw on
-the screen. Let's tell CHUNK to `draw` our `snake`!</p>
+<p>Now that we have this amazing snake we want to show it off, right?  The
+CHUNK game engine makes it easy to draw objects on the screen. Let's tell CHUNK
+to `draw` our `snake`!</p>
 
 {% highlight js %}
   var drawableSnake = { color: "green", pixels: snake };
+  var drawableObjects = [drawableSnake];
   CHUNK.draw([drawableSnake]);
 {% endhighlight %}
 
-<p>Every time you change your `snake.js` file, you'll want to save it and
-refresh the browser page that has the index.html in it</p>
+<p>CHUNK's `draw` function expects to be given a collection of objects. This
+means we must create an array and place the drawableSnake inside of it. Then we
+can pass that array into `CHUNK.draw`</p>
 
-<p>Congratulations, by the way! You've drawn a very-short snake on the screen.</p>
+<p>To see what your code does you'll need to save your `snake.js` file and
+refresh the browser window that has your index.html in it. We recommend doing
+this early and often!</p>
+
+<p>Congratulations! You've drawn a (very short!) snake on the screen.</p>
 
 {% include expected-results.html %}
 
