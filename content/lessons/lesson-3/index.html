@@ -19,24 +19,24 @@ game/snake.js:</p>
   }
 {% endhighlight %}
 
-<p>Functions are objects in Javascript that wrap a set of statements,
-and are meant to be reusable.</p>
+<p>Functions are a way to group instructions so they're easy for humans to
+understand or so the computer can use them over and over without us writing
+the code out multiple times.</p>
 
-<p>You'll notice this is similar to how we used the `var` keyword
-and `=` symbol to create the snake earlier. The only difference
-is instead of assigning a list of objects to a variable, we're
-assigning a chunk of code that we want to use later.</p>
+<p>Functions exist somewhat independently from the code around them; this means
+that if the function needs variables from the rest of the code base they should
+be passed in as arguments. The `drawSnake` function takes a single argument,
+`snakeToDraw` which it then uses to create the `drawableSnake`.
 
-<p>Now all we have to do is call drawSnake with a snake and it
-will be drawn on the screen! Write the following under the
-drawSnake function.</p>
+<p>Now all we have to do is call drawSnake with a snake and it will be drawn on
+the screen! Write the following under the drawSnake function.</p>
 
 {% highlight js %}
   var snake = [{ top: 0, left: 0}];
   drawSnake(snake);
 {% endhighlight %}
 
-<p>Javascript interprets code from top to bottom. This means we can't call
+<p>Because Javascript interprets code from top to bottom we can't call
 functions until after we've defined them. Make sure you put this code at the
 end of the `snake.js` file.</p>
 
@@ -48,6 +48,14 @@ end of the `snake.js` file.</p>
   <li>Open up the console and play around with making the
   snake move by calling `drawSnake` with snakes that have
   different `top` and `left` values for their segment.</li>
+  <li>Try to access `drawableSnake` from outside of the `drawSnake` function.
+  Check the javascript console.</li>
+  <li>Try to access `snake` inside of the `drawSnake` function. Check the
+  javascript console.</li>
+  <li>Why do you suppose you could access one but not the other? <a
+    href="http://javascript.about.com/library/bltut07.htm">Scope</a> is how you
+  know what variables a function or piece of code has access too.
+  Understanding scope is hugely important when reading and writing code.</li>
 </ul>
 
 <h3>Syntax Breakdown</h3>
