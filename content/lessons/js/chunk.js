@@ -31,6 +31,7 @@ var CHUNK = {
   onArrowKey: function(callback) {
     document.addEventListener('keydown', function(e) {
       if (CHUNK.KEY_MAPPING[e.which]) {
+        e.preventDefault();
         callback(CHUNK.KEY_MAPPING[e.which]);
       }
     });
