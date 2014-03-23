@@ -5,21 +5,21 @@ lesson_js: lesson-11.js
 ---
 <p>Let's make it so an apple appears on the screen!</p>
 
-<pre>
+{% highlight js %}
 var draw = function(snakeToDraw, apple) {
   var drawableSnake = { color: "green", pixels: snakeToDraw };
   var drawableApple = { color: "red", pixels: [apple] };
   var drawableObjects = [drawableSnake, drawableApple];
   CHUNK.draw(drawableObjects);
 }
-</pre>
+{% endhighlight %}
 
 <p>We renamed the `drawSnake` function and let it take multiple arguments so it 
 can draw an apple.</p>
 
 <p>Next, let's make sure we pass the `apple` to the `draw` function, when we call it!</p>
 
-<pre>
+{% highlight js %}
 var advanceGame = function() {
   snake = moveSnake(snake);
   if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
@@ -28,13 +28,13 @@ var advanceGame = function() {
   }
   draw(snake, apple);
 }
-</pre>
+{% endhighlight %}
 
 <p>Finally, let's create an apple to be drawn!</p>
 
-<pre>
+{% highlight js %}
 var apple = { top: 8, left: 10 };
-</pre>
+{% endhighlight %}
 
 {% include expected-results.html %}
 

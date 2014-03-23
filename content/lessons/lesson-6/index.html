@@ -10,7 +10,7 @@ different directions!</p>
 <p>First, we'll create a function that moves the segment based upon it's
 direction (down, up, right, left):</p>
 
-<pre>
+{% highlight js %}
 var moveSegment = function(segment) {
   if (segment.direction === "down") {
     return { top: segment.top + 1, left: segment.left }
@@ -23,7 +23,7 @@ var moveSegment = function(segment) {
   }
   return segment;
 }
-</pre>
+{% endhighlight %}
 
 <p>`if` statements choose what code to run. Here a series of `if` and `else if`s
 to return a new object with coordinates offset from the passed in segment.</p>
@@ -39,7 +39,7 @@ direction.</p>
 direction as the `oldSegment`. This will keep the snake moving in the same
 direction.</p>
 
-<pre>
+{% highlight js %}
 var moveSnake = function(snake) {
   var oldSegment = snake[0];
   var newSegment = moveSegment(oldSegment);
@@ -47,7 +47,7 @@ var moveSnake = function(snake) {
   var newSnake = [newSegment];
   return newSnake;
 }
-</pre>
+{% endhighlight %}
 
 <p>Next add a direction to our initial snakes segments.</p>
 

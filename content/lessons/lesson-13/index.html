@@ -5,18 +5,18 @@ lesson_js: lesson-13.js
 ---
 <p>The last thing we need to do is check to see if the snake ran into itself.</p>
 
-<pre>
+{% highlight js %}
 var ate = function(snake, otherThing) {
   var head = snake[0];
   return CHUNK.detectCollisionBetween([head], otherThing);
 }
-</pre>
+{% endhighlight %}
 
 <p>We've created an `ate` function that accepts a snake and the previous version of the snake. We can also think about passing the `ate` function other things, which we'll get into in a bit. In `ate` we also reuse the `detectCollisionBetween` to find out if there's a collision.</p>
 
 <p>Now we just have to check if the `newSnake` ate it's previous self to see if there was a collision! We do this by calling the `ate` function inside of `advanceGame`.</p>
 
-<pre>
+{% highlight js %}
 var advanceGame = function() {
   var newSnake = moveSnake(snake);
 
@@ -38,7 +38,7 @@ var advanceGame = function() {
   snake = newSnake;
   draw(snake, apple);
 }
-</pre>
+{% endhighlight %}
 
 <p>Notice, we've abstracted out the `ate` function by resuing it. It can now determine if the snake ate itself, an apple or the wall.</p>
 

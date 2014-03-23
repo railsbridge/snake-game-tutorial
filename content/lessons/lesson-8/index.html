@@ -10,7 +10,7 @@ we'll use that.</p>
 
 <p>Add an `if` statement to the `advanceGame` function like so:</p>
 
-<pre>
+{% highlight js %}
 var advanceGame = function() {
   snake = moveSnake(snake);
   if (CHUNK.detectCollisionBetween(snake, CHUNK.gameBoundaries())) {
@@ -19,12 +19,10 @@ var advanceGame = function() {
   }
   drawSnake(snake);
 }
-</pre>
+{% endhighlight %}
 
 <p>Now, when there is a collision between the snake and the border we can have
 CHUNK end the game and let the player know the game is over.</p>
-
-</pre>
 
 {% include expected-results.html %}
 

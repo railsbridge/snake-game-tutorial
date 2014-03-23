@@ -10,18 +10,18 @@ idea, so we're going to have CHUNK execute the move and draw commands for us.</p
 
 <p>We'll start with an `advanceGame` function</p>
 
-<pre>
+{% highlight js %}
 var advanceGame = function() {
   snake = moveSnake(snake);
   drawSnake(snake);
 }
-</pre>
+{% endhighlight %}
 
 <p>To get this function running we'll use our CHUNK game engine to CALL the `executeNTimesPerSecond` function. It does exactly that, to do this `executeNTimesPerSecond` takes in two arguments. The first arugement advances the game, and the second tells it how many times to move per-second.</p>
 
-<pre>
+{% highlight js %}
 CHUNK.executeNTimesPerSecond(advanceGame, 1);
-</pre>
+{% endhighlight %}
 
 <p>Bam! Now the snake moves down until it runs off the game screen.</p>
 
