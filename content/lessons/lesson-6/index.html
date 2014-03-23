@@ -25,15 +25,19 @@ var moveSegment = function(segment) {
 }
 {% endhighlight %}
 
-<p>The `if` statement allows us to make choices about what code to execute
-based upon values. Here we use a series of `if` and `else if`s to create a
-new segment at its next location. In the event the direction isn't one of
-the 4 we want, we return the original segment. The `direction` is a key
-we will be passing into `snake`.</p>
+<p>`if` statements choose what code to run. Here a series of `if` and `else if`s
+to return a new object with coordinates offset from the passed in segment.</p>
 
-<p>Once a segment is moved, we give it a direction to move in the next time.
-Otherwise the snake will just stop moving! This means we'll updating our 
-`moveSnake` function.</p>
+<p>When the passed in segment doesn't have a direction or it doesn't match the
+directions in our `if`/`else if` then we return the original segment object.</p>
+
+<p>Our returned segment doesn't have a direction; which means the snake will
+only move once! To keep the snake moving we need to assign every `newSegment` a
+direction.</p>
+
+<p>Let's change our `moveSnake` function to give the `newSegment` the same
+direction as the `oldSegment`. This will keep the snake moving in the same
+direction.</p>
 
 {% highlight js %}
 var moveSnake = function(snake) {
@@ -45,11 +49,12 @@ var moveSnake = function(snake) {
 }
 {% endhighlight %}
 
-<p>Now it's time to add a direction to the starting snake's segments so it knows where to go.</p>
+<p>Next add a direction to our initial snakes segments.</p>
 
 <p>
 var snake = [{ top: 0, left: 0, direction: "down" }];
 </p>
+<p>Now our snake knows where to start moving!</p>
 
 {% include expected-results.html %}
 
@@ -57,7 +62,7 @@ var snake = [{ top: 0, left: 0, direction: "down" }];
 
 <ul>
   <li>Use a switch statement instead of a series of ifs</li>
-  <li>Change the starting snakes segments to ensure all the directions work.</li>
+  <li>Make sure each direction works!</li>
 </ul>
 
 <h3>Syntax Breakdown</h3>
